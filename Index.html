@@ -1,2 +1,77 @@
-# Treinador-de-futebol-
-Um jogo de futebol desde a base ao êxito mundial 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treinador de Futebol</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #123c27;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+button {
+  padding: 12px;
+  margin: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: #f5d547;
+  font-weight: bold;
+}
+select {
+  padding: 10px;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+<h1>⚽ Treinador de Futebol</h1>
+<p>Monte sua estratégia e escolha a formação do time.</p>
+
+<h2>Formação tática</h2>
+<select id="formacao">
+<option>4-3-3</option>
+<option>4-4-2</option>
+<option>3-5-2</option>
+<option>4-2-3-1</option>
+</select>
+
+<h2>Estratégia</h2>
+<button onclick="jogar('Ataque')">Atacar</button>
+<button onclick="jogar('Defesa')">Defender</button>
+<button onclick="jogar('Contra-ataque')">Contra-ataque</button>
+
+<h2>Partida</h2>
+<p id="placar">Seu time 0 x 0 Adversário</p>
+<p id="mensagem">Escolha sua estratégia para começar!</p>
+
+<script>
+let seuTime = 0;
+let adversario = 0;
+
+function jogar(estrategia) {
+  let chance = Math.random();
+
+  if (estrategia === "Ataque" && chance > 0.45) {
+    seuTime++;
+    document.getElementById("mensagem").textContent =
+      "GOOOOL! Seu time atacou bem!";
+  } else if (chance > 0.75) {
+    adversario++;
+    document.getElementById("mensagem").textContent =
+      "Gol do adversário!";
+  } else {
+    document.getElementById("mensagem").textContent =
+      "A jogada não terminou em gol. Tente outra estratégia!";
+  }
+
+  document.getElementById("placar").textContent =
+    "Seu time " + seuTime + " x " + adversario + " Adversário";
+}
+</script>
+</body>
+</html>
+
